@@ -7,7 +7,19 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/help', function(req, res, next) {
-    res.render('help', {userName: 'Bob Doe'})
+    res.render('help', 
+      {
+        firstName: 'Jim',
+        lastName: 'Smith',
+        hobby: 'Fishing',
+        pets: [
+          {name: 'Spot', type: 'Dog'},
+          {name: 'Fluffy', type: 'Cat'},
+          {name: 'Goldie', type: 'Fish'},
+          {name: 'Bubbles', type: 'Fish'}
+        ]
+      }
+    )
 });
 
 module.exports = router;

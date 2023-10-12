@@ -1,10 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+  <%- include ./partials/head %>
+
   <body>
-    <h1>HELP</h1>
-    <p>Hi <%=userName %></p>
+    <% include ./partials/navbar %>
+
+    <div class="container">
+
+      <h1>HELP</h1>
+      <p>Hi <%=firstName %> <%=lastName %></p>
+      <p>Your hobby is <%=hobby %></p>
+      <p>Your first pet is <%= pets[0].name %></p>
+
+      <table class="table table-bordered table-striped">
+        <tr>
+          <td>Type</td>
+          <td>Name</td>
+        </tr>
+        <% for (let i = 0; i < pets.length; i++) { %>
+          <tr>
+            <td><%= pets[i].type %></td>
+            <td><%= pets[i].name %></td>
+          </tr>
+        <% } %>
+      </table>
+
+      <% if (pets.length > 3) { %>
+        <p>You have a lot of pets!</p>
+      <% } else { %>
+        <p>You have a few pets!</p>
+      <% } %>
+    </div>
+
+    <% include ./partials/scripts %>
   </body>
 </html>
