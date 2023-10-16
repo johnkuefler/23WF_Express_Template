@@ -5,9 +5,109 @@
   <body>
     <% include ./partials/navbar %>
 
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div class="container">
+      <h1>Todo List Form</h1>
+      
+      <form method="POST" action="/create-todo">
+          <input required type="text" name="todoTitle" placeholder="Todo Title"/>
+          <input required type="text" name="todoDescription" placeholder="Todo Description"/>
+          <input type="submit" value="Create Todo"/>
+      </form>
 
+
+      <br><br>
+      <h2>Patient entry form</h2>
+      <form action="/submit-patient" method="POST">
+        
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" class="form-control" name="firstName" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" class="form-control" name="lastName" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Birthdate</label>
+          <input type="date" class="form-control" name="birthdate" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Zip Code</label>
+          <input type="text" pattern="\d{5}" class="form-control" name="zipCode" required>
+        </div>
+    
+        <div class="form-group">
+          <label>State</label>
+          <input type="text" class="form-control" name="state" required>
+        </div>
+    
+        <div class="form-group">
+          <label>Phone #</label>
+          <input type="tel" class="form-control" name="phone" pattern="[0-9]{10}" required>
+        </div>
+    
+        <input type="hidden" name="recordDate" value="<%= new Date().toISOString().split('T')[0] %>">
+        
+        <div class="form-group">
+          <label>Insurance Type</label>
+          <select class="form-control" name="insuranceType" required>
+            <option>Medicare</option>
+            <option>Medicaid</option>
+            <option>Private</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Genetic Test Type</label>
+          <select class="form-control" name="testType" required>
+            <option>Cardio</option>
+            <option>PGX</option>
+            <option>CGX</option>
+          </select>
+        </div>
+    
+        <div class="form-group">
+          <label>Doctor Service</label>
+          <input type="text" class="form-control" name="doctorService" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Lab</label>
+          <input type="text" class="form-control" name="lab" required>
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h3>Login</h3>
+              </div>
+              <div class="card-body">
+                <form action="/login" method="POST">
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
     <% include ./partials/scripts %>
   </body>
 </html>
